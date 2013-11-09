@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ago-2013 1:35:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ClasesMusiteka.Domicilios" table="domicilios" catalog="musitekamysql">
+        <id name="iddomicilio" type="long">
+            <column name="IDDOMICILIO" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="paises" class="ClasesMusiteka.Paises" fetch="select">
+            <column name="IDPAIS" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nombrevia" type="string">
+            <column name="NOMBREVIA" length="50" not-null="true" />
+        </property>
+        <property name="numeropiso" type="string">
+            <column name="NUMEROPISO" length="50" />
+        </property>
+        <property name="codigopostal" type="long">
+            <column name="CODIGOPOSTAL" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="localidadprovincia" type="string">
+            <column name="LOCALIDADPROVINCIA" length="50" not-null="true" />
+        </property>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDDOMICILIO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Usuarios" />
+        </set>
+        <set name="usuarioses_1" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDDOMICILIO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

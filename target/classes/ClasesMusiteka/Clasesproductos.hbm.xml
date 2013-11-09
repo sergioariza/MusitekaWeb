@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ago-2013 1:35:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ClasesMusiteka.Clasesproductos" table="clasesproductos" catalog="musitekamysql">
+        <id name="idclaseproducto" type="long">
+            <column name="IDCLASEPRODUCTO" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="descclaseproducto" type="string">
+            <column name="DESCCLASEPRODUCTO" length="50" not-null="true" />
+        </property>
+        <property name="link" type="string">
+            <column name="LINK" length="50" not-null="true" />
+        </property>
+        <set name="subclasesproductoses" table="subclasesproductos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Subclasesproductos" />
+        </set>
+        <set name="productoses" table="productos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Productos" />
+        </set>
+        <set name="productoses_1" table="productos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Productos" />
+        </set>
+        <set name="subclasesproductoses_1" table="subclasesproductos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Subclasesproductos" />
+        </set>
+    </class>
+</hibernate-mapping>

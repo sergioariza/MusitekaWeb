@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ago-2013 1:35:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ClasesMusiteka.Usuarios" table="usuarios" catalog="musitekamysql">
+        <id name="idusuario" type="long">
+            <column name="IDUSUARIO" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tiposusuarios" class="ClasesMusiteka.Tiposusuarios" fetch="select">
+            <column name="IDTIPOUSUARIO" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="documentos" class="ClasesMusiteka.Documentos" fetch="select">
+            <column name="IDDOCUMENTO" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="domicilios" class="ClasesMusiteka.Domicilios" fetch="select">
+            <column name="IDDOMICILIO" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="APELLIDOS" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="50" not-null="true" />
+        </property>
+        <property name="tratamiento" type="string">
+            <column name="TRATAMIENTO" length="5" not-null="true" />
+        </property>
+        <set name="transaccioneses" table="transacciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COMPRADOR" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Transacciones" />
+        </set>
+        <set name="transaccioneses_1" table="transacciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COMPRADOR" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Transacciones" />
+        </set>
+    </class>
+</hibernate-mapping>

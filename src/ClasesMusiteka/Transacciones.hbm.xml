@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ago-2013 1:35:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ClasesMusiteka.Transacciones" table="transacciones" catalog="musitekamysql">
+        <id name="idtransaccion" type="long">
+            <column name="IDTRANSACCION" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuarios" class="ClasesMusiteka.Usuarios" fetch="select">
+            <column name="COMPRADOR" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="idproducto" type="long">
+            <column name="IDPRODUCTO" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="fechatransaccion" type="date">
+            <column name="FECHATRANSACCION" length="10" not-null="true" />
+        </property>
+        <property name="numerocompra" type="long">
+            <column name="NUMEROCOMPRA" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="formapago" type="string">
+            <column name="FORMAPAGO" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

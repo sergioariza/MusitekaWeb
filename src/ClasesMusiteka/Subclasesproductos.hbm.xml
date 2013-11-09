@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ago-2013 1:35:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ClasesMusiteka.Subclasesproductos" table="subclasesproductos" catalog="musitekamysql">
+        <id name="idsubclaseproducto" type="long">
+            <column name="IDSUBCLASEPRODUCTO" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="clasesproductos" class="ClasesMusiteka.Clasesproductos" fetch="select">
+            <column name="IDCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="descsubclaseproducto" type="string">
+            <column name="DESCSUBCLASEPRODUCTO" length="50" not-null="true" />
+        </property>
+        <property name="link" type="string">
+            <column name="LINK" length="50" not-null="true" />
+        </property>
+        <set name="productoses" table="productos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSUBCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Productos" />
+        </set>
+        <set name="productoses_1" table="productos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSUBCLASEPRODUCTO" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="ClasesMusiteka.Productos" />
+        </set>
+    </class>
+</hibernate-mapping>
