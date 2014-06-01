@@ -10,6 +10,7 @@
 		<property name="hibernate.connection.password">javamysql</property>
 		-->
 		
+		<!-- Parámetros Hibernate con DB en CloudBees (externo) -->
 	    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>	    
 		<property name="hibernate.connection.url">jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/musitekamysql</property>
 		<property name="hibernate.connection.username">sariza69</property>
@@ -21,7 +22,7 @@
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">update</property>
         
-		<!-- Parámetros Hibernate con DB en CloudBees -->
+		<!-- Parámetros Hibernate con DB en CloudBees (interno) -->
 		<!--
 		<property name="hibernate.connection.datasource">java:comp/env/jdbc/musitekamysql</property>
 		<property name="connection.pool_size">1</property>
