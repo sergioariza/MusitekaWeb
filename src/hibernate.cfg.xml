@@ -3,14 +3,21 @@
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory name="">
- 		<!-- Configuración en local -->
+ 		<!-- Parámetros Hibernate con DB en local -->
  		<!--
+ 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>	
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/musitekamysql</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">javamysql</property>
+		<property name="connection.pool_size">50</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
 		-->
 		
-		<!-- Parámetros Hibernate con DB en CloudBees (externo) -->
+		<!-- Parámetros Hibernate con DB en CloudBees -->
 	    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>	    
 		<property name="hibernate.connection.url">jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/musitekamysql</property>
 		<property name="hibernate.connection.username">sariza69</property>
@@ -21,17 +28,22 @@
 		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">update</property>
-        
-		<!-- Parámetros Hibernate con DB en CloudBees (interno) -->
-		<!--
-		<property name="hibernate.connection.datasource">java:comp/env/jdbc/musitekamysql</property>
-		<property name="connection.pool_size">1</property>
-		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+ 		<!--  -->
+ 		
+ 		<!-- Plantilla de parámetros Hibernate con DB -->
+ 		<!-- 
+ 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>	    
+		<property name="hibernate.connection.url">jdbc:mysql://xxx.xxxxxxxxxx.com:3306/xxxxxxx</property>
+		<property name="hibernate.connection.username">xxxxxxxxx</property>
+		<property name="hibernate.connection.password">xxxxxxxxx</property>
+	 	<property name="connection.pool_size">50</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">update</property>
-		<property name="hibernate.current_session_context_class">thread</property>
-	  	-->
+		 -->
+ 		<!--  -->
 	  	
 		<mapping resource="ClasesMusiteka/Usuarios.hbm.xml"/>
 		<mapping resource="ClasesMusiteka/Productos.hbm.xml"/>
