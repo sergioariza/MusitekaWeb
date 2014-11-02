@@ -27,8 +27,7 @@ public class loginControlador{
         ValidacionFormularios vf;
         UsuarioNav usuarioNav;
         
-		switch(opcion){
-        	case "inicio":
+		if(opcion == "inicio"){
         		//Ponemos valores predeterminados en el menú de navegación
                 menuNav.setProducto(0);
                 menuNav.setNivel(0);
@@ -36,10 +35,11 @@ public class loginControlador{
                 menuNav.setDescripcionLogin("");
                 
                 //Insertamos el modelo para pasarlo a la vista
-                mv.addObject("menuNav", menuNav);                
-        		break;
-        	case "alta":
-                UsuarioRegistro usuarioRegistro = new UsuarioRegistro();   
+                mv.addObject("menuNav", menuNav);
+		}
+		else if(opcion == "alta")
+		{
+				UsuarioRegistro usuarioRegistro = new UsuarioRegistro();   
                 usuariosHelper = new UsuariosHelper();
                 vf = new ValidacionFormularios();
                 String errores = "";
@@ -205,9 +205,10 @@ public class loginControlador{
                 
                 //Insertamos el modelo para pasarlo a la vista
                 mv.addObject("usuarioRegistro", usuarioRegistro);
-                mv.addObject("menuNav", menuNav);        
-        		break;
-        	case "login":
+                mv.addObject("menuNav", menuNav);
+		}
+		else if(opcion == "login")
+		{
         		int idusuario = 0;
                 usuariosHelper = new UsuariosHelper();
                 UsuarioLogin usuarioLogin = new UsuarioLogin();
@@ -286,8 +287,9 @@ public class loginControlador{
                 menuNav.setDescripcionLogin("");
                 mv = new ModelAndView("index");
                 mv.addObject("menuNav", menuNav);
-        		break;
-        	case "logout":
+		}
+		else if(opcion == "logout")
+		{
         		mv = new ModelAndView("index");
         		usuarioNav = (UsuarioNav) request.getSession().getAttribute("usuarioNav");
                                
@@ -304,9 +306,10 @@ public class loginControlador{
                 request.getSession().setAttribute("usuarioNav", usuarioNav);
                 
                 //Insertamos el modelo para pasarlo a la vista
-                mv.addObject("menuNav", menuNav);    
-        		break;
-        	case "recordar":
+                mv.addObject("menuNav", menuNav);
+		}
+		else if(opcion == "recordar")
+		{
         		usuariosHelper = new UsuariosHelper();
         		EnvioCorreo ec = new EnvioCorreo();
                 vf = new ValidacionFormularios();                 
@@ -347,8 +350,7 @@ public class loginControlador{
                 menuNav.setDescripcionLogin("Le hemos enviado la contraseña. Por favor compruébelo en su archivo de entradas del correo electrónico e indique en esta página su contraseña.");
                 
                 //Insertamos el modelo para pasarlo a la vista
-                mv.addObject("menuNav", menuNav);  
-        		break;
+                mv.addObject("menuNav", menuNav);
         }
 		
 		return mv;
